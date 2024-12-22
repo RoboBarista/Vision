@@ -1,0 +1,10 @@
+numpy
+torch
+torchvision
+opencv-python
+Flask
+Flask-SocketIO
+eventlet
+websockets
+pyttsx3
+ultralytics

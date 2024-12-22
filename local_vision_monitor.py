@@ -15,7 +15,7 @@ import numpy as np
 import torch
 from torchvision import models
 from ultralytics import YOLO
-from model.resnet import ResNetBackboneModel
+from Vision.model.resnet import ResNetBackboneModel
 from utils import find_nearest, get_boxes_and_corners, create_empty_items, make_message, speaking
 
 # Azure Kinect 라이브러리 경로 추가
@@ -63,7 +63,7 @@ def update_vision_data():
     device = initialize_kinect()
     if model is None:
         print("[INFO] Loading YOLO model...")
-        model = YOLO("./model/241119_best.pt")
+        model = YOLO("./model/Drip_Coffee_detection_ver_1119.pt")
         print("[INFO] YOLO model loaded.")
 
     while True:
@@ -153,7 +153,7 @@ def classify_cropped_image():
     if c_model is None:
         print("[INFO] Loading ResNet model for classification...")
         c_model = ResNetBackboneModel(pretrained=False)
-        c_model.load_state_dict(torch.load('./model/drip_classification_model (1).pth'))
+        c_model.load_state_dict(torch.load('./model/drip_classification_model.pth'))
         c_model.eval()
         print("[INFO] ResNet model loaded.")
 
